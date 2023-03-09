@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+<style>
+	.select2-selection--single{
+		height: 33px !important;
+	}
+</style>
+<div class="content" style="padding-top: 100px">
+	<div style=" width: 300px ; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; padding: 10px; margin: auto;">
+		<h3 style="text-align: center;" class="title">Add new user</h3>
+
+		{{ form_start(registrationForm) }}
+		{{ form_row(registrationForm.email) }}
+		{{ form_row(registrationForm.plainPassword, {label: 'Password'}) }}
+		{{ form_row(registrationForm.roles) }}
+		<button type="submit" class="btn btn-primary btn-sm">Register</button>
+		{{ form_end(registrationForm) }}
+	</div>
+</div>
+{% endblock %}

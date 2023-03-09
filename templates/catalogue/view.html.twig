@@ -1,0 +1,420 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit a catalogue{% endblock %}
+
+{% block body %}
+
+{# <div class="content new-catalogue">
+    <h3 class="title">View a catalog</h3>
+
+    <div class="row w-100">
+        <div class="col-md">
+            <h4 class="" style="background: silver;">Identifier</h4>
+            {{ (catalogue.identifier) }}
+        </div>
+        <div class="col-md">
+            <h4 class="" style="background: silver;">Repository</h4>
+            {{ (catalogue.repository) }}
+        </div>
+        <div class="col-md">
+            <h4 class="" style="background: silver;">Shelfmark</h4>
+            {{ (catalogue.shelfmark) }}
+        </div>
+    </div>
+    <div class="row w-100">
+        <div class="col-md">
+            <h4 class="" style="background: silver;">Title</h4>
+            {{ (catalogue.title) }}
+        </div>
+    </div>
+    <div class="row w-100">
+        <div class="col-md">
+            <h4 class="" style="background: silver;">Link To Archive Catalogue</h4>
+            {{ (catalogue.linkArchiveCatalogue) }}
+        </div>
+    </div>
+    <div class="row w-100">
+        <div class="col-md">
+            <h4 class="" style="background: silver;">Digital Resource</h4>
+            {{ (catalogue.digitalResource) }}
+        </div>
+    </div>
+
+    <h3 class="title">CONTENT</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.primary_creator, {attr:{"class":"catalogue-control author-select2"}}) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.secondary_creator, {attr:{"class":"catalogue-control author-select2"}}) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Incipit Diplomatic</h4>
+                {{ (catalogue.incipitDiplomatic) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Incipit Modernised</h4>
+                {{ (catalogue.incipitModernised) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Text Language</h4>
+                {{ (catalogue.textLanguage) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Autograph</h4>
+                {{ (catalogue.autograph) }}
+            </div>
+        </div>
+
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.briefSummary) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.detailedSummary) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.keywords) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.genre) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.status) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.bibliography) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.inclusions) }}
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title mt-4">PHYSICAL DESCRIPTION</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.material) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.extent) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.format) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.dimensions) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.watermark) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.additionalComments) }}
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title mt-4">OBJECT DESCRIPTION</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.hands) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.decorations) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.additions) }}
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title mt-4">HISTORY</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.date) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.origin) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.ownership) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.provenance) }}
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title mt-4">OCV</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.linkDigitalVoltaire) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.ocvVolume) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.ocvChapter) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.textChapter) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.textReference) }}
+            </div>
+            <div class="col-md">
+                <h4 class="" style="background: silver;">Title</h4>
+                {{ (catalogue.manuscriptDetails) }}
+            </div>
+        </div>
+    </div>
+
+</div> #}
+<div class="content new-catalogue">
+    <h3 class="title">Edit a catalog</h3>
+
+    {{ form_start(form) }}
+    <div class="row w-100">
+        <div class="col-md">
+            {{ form_row(form.identifier, {'disabled':'disabled'}) }}
+        </div>
+        <div class="col-md">
+            {{ form_row(form.repository, {'disabled':'disabled'}) }}
+        </div>
+        <div class="col-md">
+            {{ form_row(form.shelfmark, {'disabled':'disabled'}) }}
+        </div>
+    </div>
+    <div class="row w-100">
+        <div class="col-md">
+            {{ form_row(form.title, {'disabled':'disabled'}) }}
+        </div>
+    </div>
+    <div class="row w-100">
+        <div class="col-md">
+            {{ form_row(form.link_archive_catalogue, {'disabled':'disabled'}) }}
+        </div>
+    </div>
+    <div class="row w-100">
+        <div class="col-md">
+            {{ form_row(form.digital_resource, {'disabled':'disabled'}) }}
+        </div>
+    </div>
+
+    <h3 class="title">CONTENT</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.primary_creator, {'disabled':'disabled'}, {attr:{"class":"form-control author-select2"}}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.secondary_creator, {'disabled':'disabled'}, {attr:{"class":"form-control author-select2"}}) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.incipit_diplomatic, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.incipit_modernised, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.text_language, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.autograph, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.brief_summary, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.detailed_summary, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.keywords, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.genre, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.status, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.bibliography, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.inclusions, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title mt-4">PHYSICAL DESCRIPTION</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.material, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.extent, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.format, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.dimensions, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.watermark, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.additional_comments, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title mt-4">OBJECT DESCRIPTION</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.hands, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.decorations, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.additions, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title mt-4">HISTORY</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.date, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.origin, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.ownership, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.provenance, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title mt-4">OCV</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.link_digital_voltaire, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.ocv_volume, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.ocv_chapter, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.text_chapter, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.text_reference, {'disabled':'disabled'}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.manuscript_details, {'disabled':'disabled'}) }}
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('.form-select').select2();
+    })
+</script>
+{% endblock %}

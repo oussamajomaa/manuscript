@@ -1,0 +1,208 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New catalogue{% endblock %}
+
+
+
+
+{% block body %}
+
+
+<div class="content new-catalogue">
+    <h3 class="title">Add a new catalog</h3>
+
+    {{ form_start(form) }}
+    <div class="row w-100">
+        <div class="col-md">
+            {{ form_row(form.identifier) }}
+        </div>
+        <div class="col-md">
+            {{ form_row(form.repository) }}
+        </div>
+        <div class="col-md">
+            {{ form_row(form.shelfmark) }}
+        </div>
+    </div>
+    <div class="row w-100">
+        <div class="col-md">
+            {{ form_row(form.title) }}
+        </div>
+    </div>
+    <div class="row w-100">
+        <div class="col-md">
+            {{ form_row(form.link_archive_catalogue) }}
+        </div>
+    </div>
+    <div class="row w-100">
+        <div class="col-md">
+            {{ form_row(form.digital_resource) }}
+        </div>
+    </div>
+
+    <h3 class="title">CONTENT</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.primary_creator, {attr:{"class":"form-control author-select2"}}) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.secondary_creator, {attr:{"class":"form-control author-select2"}}) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.incipit_diplomatic) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.incipit_modernised) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.text_language) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.autograph) }}
+            </div>
+        </div>
+
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.brief_summary) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.detailed_summary) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.keywords) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.genre) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.status) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.bibliography) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.inclusions) }}
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title mt-4">PHYSICAL DESCRIPTION</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.material) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.extent) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.format) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.dimensions) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.watermark) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.additional_comments) }}
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title mt-4">OBJECT DESCRIPTION</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.hands) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.decorations) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.additions) }}
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title mt-4">HISTORY</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.date) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.origin) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.ownership) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.provenance) }}
+            </div>
+        </div>
+    </div>
+
+    <h3 class="title mt-4">OCV</h3>
+    <div class="border d-flex flex-column justify-content-center align-items-center my-1 pt-1 rounded">
+
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.link_digital_voltaire) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.ocv_volume) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.ocv_chapter) }}
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md">
+                {{ form_row(form.text_chapter) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.text_reference) }}
+            </div>
+            <div class="col-md">
+                {{ form_row(form.manuscript_details) }}
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary d-block ml-auto">Save</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.author-select2').select2();
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit an user
+{% endblock %}
+
+{% block body %}
+<style>
+	.select2-selection--single{
+		height: 33px !important;
+	}
+</style>
+<div class="content" style="padding-top: 100px">
+	<div style=" width: 300px ; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; padding: 10px; margin: auto;">
+		<h3 style="text-align: center;" class="title">Edit user</h3>
+
+		{{ form_start(form) }}
+		{{ form_row(form.email) }}
+		{{ form_row(form.roles, {'value':role}) }}
+		<button type="submit" class="btn btn-primary btn-sm">Save</button>
+		{{ form_end(form) }}
+	</div>
+</div>
+{% endblock %}

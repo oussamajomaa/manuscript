@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogues{% endblock %}
+
+{% block body %}
+<div class="content">
+    {# Dialog Box Confirm Delete #}
+    <div class="confirm p-2 mb-2 rounded" style="background: rgba(255, 0, 0, 0.200);">
+        <div>Are you sure you want to delete this catalogue?</div>
+        <div>
+            <a href="" class="close btn btn-secondary btn-md">Cancel</a>
+            <a href="" class="btn btn-danger btn-md confirm-delete">Yes</a>
+        </div>
+    </div>
+
+    {# Flashes Messages #}
+    {% for label, messages in app.flashes %}
+    {% for message in messages %}
+    <div class="alert alert-{{label}} alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endfor %}
+
+    {# Search Form By Title #}
+    {% set search = app.session.get('search') %}
+    <form class="search" action="{{path('app_catalog')}}">
+        {% if search == "" %}
+        <button type="submit" class="button-submit">
+            <span class="material-icons">search</span>
+        </button>
+        {% else %}
+        <a href="{{path('app_catalog_clear')}}" style="text-decoration: none; color:#808080">
+            <span class="material-icons">clear</span>
+        </a>
+        {% endif %}
+        <input type="text" placeholder="Search.." class="input-search" name="search" value="{{search}}">
+    </form>
+    <hr>
+
+    {# Page Title + add button #}
+    <div class="d-flex justify-content-between">
+        <h3 class="title">Catalogues</h3>
+        <a href="{{path('app_catalog_new')}}" class="btn btn-primary btn-sm">Add catalogue</a>
+    </div>
+
+    {# Table content data #}
+    <table class="table" style="table-layout: fixed;">
+        <thead>
+            <tr>
+                {# <th style="width: 20%;">Identifier </th> #}
+                <th style="width: 20%; position:relative;">Identifier
+                    <a href="{{path('app_catalog', {'order':'ASC', 'column':'identifier'})}}">
+                        <span class="material-icons"
+                            style="font-size: 18px; position:absolute; top:5px; left:75px;">arrow_drop_up</span></a>
+                    <a href="{{path('app_catalog', {'order':'DESC', 'column':'identifier'})}}">
+                        <span class="material-icons"
+                            style="font-size: 18px; position:absolute; top:18px; left:75px;">arrow_drop_down</span></a>
+                </th>
+                <th style="width: 25%;">Repository </th>
+                <th style="width: 50%; position:relative;">Title
+                    <a href="{{path('app_catalog', {'order':'ASC', 'column':'title'})}}">
+                        <span class="material-icons"
+                            style="font-size: 18px; position:absolute; top:5px; left:40px;">arrow_drop_up</span></a>
+                    <a href="{{path('app_catalog', {'order':'DESC', 'column':'title'})}}">
+                        <span class="material-icons"
+                            style="font-size: 18px; position:absolute; top:18px; left:40px;">arrow_drop_down</span></a>
+                </th>
+                <th style="width: 5%;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for catalogue in catalogues %}
+            <tr class="tr-row-hover">
+                <td data-label="Identifier">{{catalogue.identifier}}</td>
+                <td data-label="Repository" style="white-space:nowrap;overflow: hidden;">{{catalogue.repository}}</td>
+                <td data-label="Title" style="white-space:nowrap;overflow: hidden;">{{catalogue.title|striptags}}</td>
+                <td>
+                    <div class="dropdown ">
+                        <button class="dropdown-toggle action" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            ...
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{path('app_catalog_view', {'id':catalogue.id})}}">View
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item" href="{{path('app_catalog_edit', {'id':catalogue.id})}}">Edit
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item delete-button"
+                                    href="{{path('app_catalog_delete', {'id':catalogue.id})}}">Delete
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {# Pagination #}
+    {{ knp_pagination_render(catalogues,'paginations/sliding.html.twig') }}
+</div>
+
+</div>
+<script>
+    // Disactive delete button
+    let links = document.querySelectorAll('.delete-button')
+    links.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault()
+            let url = e.target.href
+            console.log(e.target.href)
+            let confirm = document.querySelector('.confirm')
+            confirm.style.display = 'flex'
+            document.querySelector('.confirm-delete').addEventListener('click', () => {
+                fetch(url)
+            })
+        })
+    })
+</script>
+{% endblock %}

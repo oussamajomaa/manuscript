@@ -1,0 +1,145 @@
+{# Side Nav Menu Mode full screen #}
+<div class="side " >
+    {# LOGO #}
+    <a href="{{path('app_catalog')}}" style="text-decoration: none">
+        {# <img src="{{ asset('cvm2.png')}}" alt="" class="logo"> #}
+        <p class="title-logo">Catalogue of Voltaire Manuscripts</p>
+    </a>
+
+    <nav class="nav flex-column" style="padding-top: 20px;">
+        <a  {% if 'catalog' in route %}
+            class="link-menu active" 
+            {% else %}
+            class="link-menu"
+            {% endif %}
+            href="{{path('app_catalog')}}">
+            <span class="material-icons">auto_stories</span>
+            <span>Catalogues</span>
+
+        </a>
+        <a  {% if 'author' in route %}
+            class="link-menu active"
+            {% else %}
+            class="link-menu"
+            {% endif %}
+            href="{{path('app_author')}}">
+            <span class="material-icons">history_edu</span>
+            <span>Authors</span>
+
+        </a>
+        {% if app.user and app.user.roles[0] == 'ROLE_ADMIN' %}
+            <a 
+            {% if 'user' in route %}
+            class="link-menu active"
+            {% else %}
+            class="link-menu"
+            {% endif %}
+            href="{{path('app_user')}}">
+            <span class="material-icons">person</span>
+            <span>Users</span>
+        </a>
+        {% endif %}
+        {# <a class="link-menu" href="{{path('app_register')}}">Register</a> #}
+        {% if app.user %}
+        <a class="link-menu" href="{{path('app_logout')}}">
+            <span class="material-icons">logout</span>
+            <span>Logout</span>
+        </a>
+        {# <div class="divider py-1 bg-secondary"></div> #}
+        {% else %}
+        <a class="link-menu" href="{{path('app_login')}}">
+            <span class="material-icons">login</span>
+            <span>Login</span>
+        </a>
+        {% endif %}
+
+    </nav>
+    {% if app.user %}
+    <div class="mt-5">
+        <h6 class="text-center">You are logged in as:
+            <span class="mt-1 badge bg-danger">{{app.user.email}}</span>
+        </h6>
+    </div>
+    {% endif %}
+
+</div>
+
+{# Side Nav Menu Mode responsive #}
+<div class="header">
+    <div class="dropdown">
+        <div class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="material-icons" style="margin-left: 10px;">menu</i>
+        </div>
+        <ul class="dropdown-menu">
+            <div class="" style="padding-bottom:20px;"> 
+                <a href="{{path('app_catalog')}}" style="text-decoration: none" >
+                    {# <img src="{{ asset('cvm2.png')}}" alt="" class="logo"> #}
+                    <p class="title-logo">Catalogue of Voltaire Manuscripts</p>                </a>
+            </div>
+            
+            <li>
+                <a  
+                    {% if 'catalog' in route %}
+                    class="link-menu active" 
+                    {% else %}
+                    class="link-menu"
+                    {% endif %} 
+                    href="{{path('app_catalog')}}" >
+                    <span class="material-icons">auto_stories</span>
+                    <span>Catalogues</span>
+                </a>
+            </li>
+            <li>
+                <a  
+                    {% if 'author' in route %}
+                    class="link-menu active" 
+                    {% else %}
+                    class="link-menu"
+                    {% endif %}
+                    href="{{path('app_author')}}">
+                    <span class="material-icons">history_edu</span>
+                    <span>Authors</span>
+                </a>
+            </li>
+            <li>
+                {% if app.user and app.user.roles[0] == 'ROLE_ADMIN' %}
+                <a  
+                    {% if 'user' in route %}
+                    class="link-menu active" 
+                    {% else %}
+                    class="link-menu"
+                    {% endif %}
+                    href="{{path('app_user')}}">
+                    <span class="material-icons">person</span>
+                    <span>Users</span>
+                </a>
+                {% endif %}
+            </li>
+            {# <li><a class="dropdown-item" href="{{path('app_register')}}">Register</a></li> #}
+            {% if app.user %}
+            <li><a class="dropdown-item" href="{{path('app_logout')}}">
+                    <span class="material-icons">logout</span>
+                    <span>Logout</span>
+                    
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <a class="dropdown-item" href="{{path('app_login')}}">
+                    <span class="material-icons">login</span>
+                    <span>Login</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div>
+        {% if app.user %}
+        <h6 class="ml" style="margin-right: 10px">You are logged in as: <span class="badge bg-danger">{{app.user.email}}</span></h6>
+        {% endif %}
+    </div>
+</div>
+
+
+
