@@ -106,7 +106,7 @@ th,
 td,
 i {
     font-family: 'Noto Sans', sans-serif;
-    font-size: 14px;
+    
     color: #010102;
     padding: 0;
 }
@@ -221,8 +221,13 @@ td {
 width: 100%; */
 }
 
-
-
+/* login and reset password form */
+.login-reset{
+    width: 400px ;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
+    padding: 10px; 
+    margin: auto;
+}
 
 
 
