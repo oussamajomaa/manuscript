@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Author{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h3 class="title">Add a new author</h3>
+        
+        {{ form_start(form) }}
+        {{ form_row(form.first_name) }}
+        {{ form_row(form.last_name) }}
+        {{ form_row(form.authority_link) }}
+        <button class="btn btn-primary btn-sm d-block ml-auto">Save</button>
+        {{ form_end(form) }}
+    
+</div>
+
+{% endblock %}

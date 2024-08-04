@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+.btn-primary {
+    background: #0D47A1;
+    border-color: #0D47A1;
+}
+
+.alert {
+    color: rgb(73, 73, 73);
+}
+
+.alert-warning {
+    background: rgba(255, 255, 0, 0.200);
+}
+
+.alert-success {
+    background: rgba(0, 128, 0, 0.200);
+}
+
+.alert-danger {
+    background: rgba(255, 0, 0, 0.200);
+}
+
+.confirm {
+    background: rgba(255, 0, 0, 0.200);
+    display: flex;
+    justify-content: space-between;
+    display: none;
+}
+
+
+/* // font-family: 'Handlee', cursive;
+// font-family: 'Noto Sans', sans-serif;
+// font-family: 'Noto Serif', serif; */
+
+
+/* remove shadow from input in focus */
+.form-control:focus,
+.form-select:focus {
+    box-shadow: none;
+}
+
+.form-select {
+    color: #475569
+}
+
+/* supprmer la flèsh du dropdown */
+.dropdown-toggle:after {
+    display: none !important;
+}
+
+.side {
+    height: 100vh;
+    background: #F8FAFC;
+    width: 230px;
+    border-right: 1px #dee0e2 solid;
+    padding-top: 10px;
+    position: fixed;
+
+}
+
+.title-logo {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 900;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.content {
+    width: calc(100% - 230px);
+    margin-left: 230px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+html,
+body {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 14px;
+    /* color: #475569; */
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+label,
+input,
+textarea,
+select,
+p,
+a,
+ul,
+li,
+table,
+tr,
+th,
+td,
+i {
+    font-family: 'Noto Sans', sans-serif;
+    
+    color: #010102;
+    padding: 0;
+}
+
+.logo {
+    width: 210px !important;
+    display: block;
+    margin: 0;
+    margin: auto;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #475569;
+}
+
+th {
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+}
+
+td {
+    font-size: 14px;
+    font-weight: 200;
+}
+
+
+
+
+.link-menu {
+    padding: 4px 16px;
+    text-decoration: none;
+    color: #475569;
+    font-weight: 400;
+}
+
+.link-menu:hover {
+    color: #475569;
+    background: #f1f1f1;
+
+}
+
+.link-menu,
+.dropdown-item {
+    display: flex;
+    align-items: center;
+
+}
+
+.link-menu .material-icons,
+.dropdown-item .material-icons {
+    margin-right: 10px;
+    font-size: 18px;
+
+}
+
+.dropdown-item {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #475569 !important;
+}
+
+.action {
+    border-radius: 5px;
+    background: transparent;
+    border: none;
+}
+
+.tr-row-hover .action:hover {
+    background: #d7ccc8;
+    font-weight: bolder;
+}
+
+.tr-row-hover:hover {
+    background: #fafafa;
+}
+
+.header {
+    display: none;
+    width: 100%;
+    background: #F8FAFC;
+    height: 50px;
+    padding-top: 10px;
+}
+
+
+.header .dropdown-menu {
+    height: calc(100vh - 41px);
+    width: 230px;
+    background: #F8FAFC;
+    /* padding-top: 27px !important; */
+    border: none;
+    font-size: 14px;
+    /* padding: 0; */
+}
+
+
+.side {
+    height: 100vh;
+    background: #F8FAFC;
+    width: 230px;
+    border-right: 1px #dee0e2 solid;
+    padding-top: 10px;
+}
+
+.select2-selection,
+.select2-selection--multiple {
+    border: 1px solid #ced4da !important;
+    /* height: 38px;
+width: 100%; */
+}
+
+/* login and reset password form */
+.login-reset{
+    width: 400px ;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
+    padding: 10px; 
+    margin: auto;
+}
+
+
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+form.search input[type=text] {
+    padding: 5px 10px;
+    width: 300px;
+    border: none;
+    outline: none;
+}
+
+form.search button {
+    background: transparent;
+    border: none;
+    float: left;
+    margin-top: 5px;
+    color: gray;
+
+}
+
+form.search .material-icons {
+    font-size: 18px;
+}
+
+.active {
+    background: #f1f1f1;
+}
+
+.pagination {
+    float: right;
+}
+
+.pagination .page-item .page-link {
+    font-size: 12px !important;
+}
+
+
+
+
+@media (max-width: 991px) {
+    .side {
+        display: none;
+    }
+
+    .header {
+        width: 100%;
+        background: #F8FAFC;
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .body {
+        flex-direction: column;
+    }
+
+    .content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tr {
+        display: block;
+        margin-bottom: 40px;
+    }
+
+    .table td {
+        display: block;
+        text-align: right;
+    }
+
+    .table td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        color: #475569;
+    }
+}
