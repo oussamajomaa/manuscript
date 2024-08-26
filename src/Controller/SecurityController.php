@@ -41,58 +41,107 @@ class SecurityController extends AbstractController
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
+    // #[Route(path: '/passwordrecovery', name: 'forgotten_password')]
+    // public function forgotten(
+    //     MailerInterface $mailer,
+    //     Request $request,
+    //     UserRepository $repo,
+    //     TokenGeneratorInterface $tokenGenerator,
+    //     EntityManagerInterface $entityManager,
+    // ): Response {
+    //     $form = $this->createForm(ResetPasswordType::class);
+    //     $form->handleRequest($request);
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $email = $form->get('email')->getData();
+    //         $user = $repo->findOneByEmail($email);
+    //         // On vérifie si on a un utilisateur
+    //         if ($user) {
+    //             // On génère un token de réinitialisation
+    //             $token = $tokenGenerator->generateToken();
+    //             $user->setResetToken($token);
+    //             $entityManager->persist($user);
+    //             $entityManager->flush();
+
+    //             // On génère un lien de réinitialisation du mot de passe
+    //             $url = $this->generateUrl('reset_pass', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
+
+    //             // On crée les données du mail
+
+    //             //    Envoi du mail
+    //             $email = (new Email())
+    //                 ->from('osmjom@gmail.com')
+    //                 ->to($email)
+    //                 ->subject('Reset Password')
+
+    //                 ->html("<p>Hello</p>
+    //                         <p>Pour votre demande de réinitialisation de mot de passe, veuillez cliquer sur le lien suivant $url</p>
+    //                         <p>Thanks</p>");
+    //             $mailer->send($email);
+
+
+    //             $this->addFlash('success', 'Email sent successfully. Verify your adress mail please!');
+    //             return $this->redirectToRoute('app_login');
+    //             //    dd($url);
+    //         }
+    //         $this->addFlash('danger', 'A problem has occurred');
+    //         return $this->redirectToRoute('app_login');
+    //     }
+
+
+
+    //     return $this->render('security/reset_password_request.html.twig', [
+    //         'form' => $form->createView()
+    //     ]);
+    // }
+
     #[Route(path: '/passwordrecovery', name: 'forgotten_password')]
-    public function forgotten(
-        MailerInterface $mailer,
-        Request $request,
-        UserRepository $repo,
-        TokenGeneratorInterface $tokenGenerator,
-        EntityManagerInterface $entityManager,
-    ): Response {
-        $form = $this->createForm(ResetPasswordType::class);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $email = $form->get('email')->getData();
-            $user = $repo->findOneByEmail($email);
-            // On vérifie si on a un utilisateur
-            if ($user) {
-                // On génère un token de réinitialisation
-                $token = $tokenGenerator->generateToken();
-                $user->setResetToken($token);
-                $entityManager->persist($user);
-                $entityManager->flush();
+public function forgotten(
+    MailerInterface $mailer,
+    Request $request,
+    UserRepository $repo,
+    TokenGeneratorInterface $tokenGenerator,
+    EntityManagerInterface $entityManager,
+): Response {
+    $form = $this->createForm(ResetPasswordType::class);
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+        $email = $form->get('email')->getData();
+        $user = $repo->findOneByEmail($email);
+        // On vérifie si on a un utilisateur
+        if ($user) {
+            // On génère un token de réinitialisation
+            $token = $tokenGenerator->generateToken();
+            $user->setResetToken($token);
+            $entityManager->persist($user);
+            $entityManager->flush();
 
-                // On génère un lien de réinitialisation du mot de passe
-                $url = $this->generateUrl('passwordrecovery', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
+            // On génère un lien de réinitialisation du mot de passe
+            $url = $this->generateUrl('reset_pass', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
 
-                // On crée les données du mail
+            // On crée les données du mail
 
-                //    Envoi du mail
-                $email = (new Email())
-                    ->from('osmjom@gmail.com')
-                    ->to($email)
-                    ->subject('Reset Password')
+            //    Envoi du mail
+            $email = (new Email())
+                ->from('osmjom@gmail.com')
+                ->to($email)
+                ->subject('Reset Password')
+                ->html("<p>Hello</p>
+                        <p>Pour votre demande de réinitialisation de mot de passe, veuillez cliquer sur le lien suivant $url</p>
+                        <p>Thanks</p>");
+            $mailer->send($email);
 
-                    ->html("<p>Hello</p>
-                            <p>Pour votre demande de réinitialisation de mot de passe, veuillez cliquer sur le lien suivant $url</p>
-                            <p>Thanks</p>");
-                $mailer->send($email);
-
-
-                $this->addFlash('success', 'Email sent successfully. Verify your adress mail please!');
-                return $this->redirectToRoute('app_login');
-                //    dd($url);
-            }
-            $this->addFlash('danger', 'A problem has occurred');
+            $this->addFlash('success', 'Email sent successfully. Verify your address mail please!');
             return $this->redirectToRoute('app_login');
         }
-
-
-
-        return $this->render('security/reset_password_request.html.twig', [
-            'form' => $form->createView()
-        ]);
+        $this->addFlash('danger', 'A problem has occurred');
+        return $this->redirectToRoute('app_login');
     }
+
+    return $this->render('security/reset_password_request.html.twig', [
+        'form' => $form->createView()
+    ]);
+}
+
 
     #[Route('/passwordrecovery/{token}', name: 'reset_pass')]
     public function resetPass(
